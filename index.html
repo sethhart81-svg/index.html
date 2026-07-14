@@ -30,6 +30,17 @@
 
 <h1>ZFCA ROUTES AND SCHEDULES</h1>
 
+<div id="pt-clock" style="
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    background:#e6f2ff;
+    border:2px solid #7ea3cc;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:20px;">
+</div>
+
 <table>
   <tr>
     <th>Route</th>
@@ -107,6 +118,28 @@ Our intention is to accommodate our customer's needs whenever possible.
 <p>¹Subject to Carrier availability</p>
 
 <p>²Next Day Pick Up for USPS</p>
+<script>
+function updatePTTime() {
+    const now = new Date();
 
+    const ptTime = now.toLocaleString("en-US", {
+        timeZone: "America/Los_Angeles",
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+    });
+
+    document.getElementById("pt-clock").innerHTML =
+        "Current Pacific Time: " + ptTime + " PT";
+}
+
+updatePTTime();
+setInterval(updatePTTime, 1000);
+</script>
 </body>
 </html>
